@@ -23,8 +23,8 @@ public class BallDemo
         box=new Box (100,100,500,400, myCanvas);
         box.draw();
         
-        Box box2 = new Box(myCanvas);
-        box2.draw();
+        // Box box2 = new Box(myCanvas);
+        // box2.draw();
         
     }
 
@@ -36,6 +36,13 @@ public class BallDemo
     public void boxBounce()
     {
         // you must implement this
+        BoxBall demoBall = new BoxBall(200,275,24,Color.green,box,myCanvas);
+        demoBall.draw();
+        
+        while(true){
+        demoBall.move();
+        box.draw();
+        }
     }
     
     /**

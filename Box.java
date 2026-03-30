@@ -1,4 +1,5 @@
 import java.awt.Dimension;
+import java.awt.Color;
 
 /**
  * Box creates a box from four lines on a Canvas
@@ -76,6 +77,7 @@ public class Box
      */
     public void draw()
     {
+        myCanvas.setForegroundColor(Color.BLACK);
         myCanvas.drawLine(upperLeftX, upperLeftY, lowerRightX, upperLeftY);
         myCanvas.drawLine(lowerRightX, upperLeftY, lowerRightX, lowerRightY);
         myCanvas.drawLine(lowerRightX, lowerRightY, upperLeftX, lowerRightY);
