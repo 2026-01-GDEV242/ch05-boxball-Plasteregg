@@ -114,7 +114,13 @@ public class BoxBall
         draw();
     }    
     /**
-     * This makes the Ball bounce more "random"
+     * Generates a random speed for the ball, excluding zero.
+     * <p>
+     * The speed range is from -7 to +7 pixels per move, but never zero to
+     * prevent the ball from being stationary.
+     * </p>
+     *
+     * @return a random integer speed in the range -7..-1 or 1..7
      */
     private int randomSpeed()
     {
