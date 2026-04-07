@@ -18,7 +18,7 @@ import java.awt.geom.*;
  * @author David J. Barnes
  * @author Bruce Quig
  * @author William Crosbie
- *
+ * @author Andrew Wright
  * @version 2025.10.06
  */
 
@@ -53,8 +53,8 @@ public class BoxBall
         color = ballColor;
         diameter = ballDiameter;
         myBox= box;
-        xSpeed= 4;
-        ySpeed= 3;
+        xSpeed = randomSpeed();
+        ySpeed = randomSpeed();
 
         canvas = drawingCanvas;
     }
@@ -91,28 +91,40 @@ public class BoxBall
   
         // figure out if it has hit the left or right wall
         if(xPosition < myBox.getLeftWall())
-        {
-            xSpeed= -xSpeed;
-            xPosition = myBox.getLeftWall();
-        }
+    {
+    xSpeed = -randomSpeed();
+    xPosition = myBox.getLeftWall();
+    }
         if(xPosition + diameter > myBox.getRightWall())
-        {
-            xSpeed= -xSpeed;
-            xPosition = myBox.getRightWall()- diameter;
-        }
+    {
+    xSpeed = -randomSpeed();
+    xPosition = myBox.getRightWall() - diameter;
+    }
         // figure out if it has hit the top or bottom wall
-         if(yPosition < myBox.getTopWall())
-        {
-            ySpeed= -ySpeed;
-            yPosition = myBox.getTopWall();
-        }
-         if(yPosition + diameter > myBox.getBottomWall())
-        {
-            ySpeed= -ySpeed;
-            yPosition = myBox.getBottomWall() - diameter;
-        }
+       if(yPosition < myBox.getTopWall())
+    {
+    ySpeed = -randomSpeed();
+    yPosition = myBox.getTopWall();
+    }
+       if(yPosition + diameter > myBox.getBottomWall())
+    {
+    ySpeed = -randomSpeed();
+    yPosition = myBox.getBottomWall() - diameter;
+    }
         draw();
     }    
+    /**
+     * This makes the Ball bounce more "random"
+     */
+    private int randomSpeed()
+    {
+    int speed = 0;
+    while(speed == 0)
+    {
+        speed = (int)(Math.random() * 15) - 7; // -7 to +7
+    }
+    return speed;
+    }
 
     /**
      * return the horizontal position of this ball
